@@ -1,0 +1,72 @@
+Config {
+
+   -- appearance
+    font	= "xft:Hack:size=9.5:bold:antialias=true,FontAwesome:size=12"
+   , bgColor	= "#282c34"
+   , fgColor	= "#bbc2cf"
+   , position	= TopW L 95
+
+   -- behavior
+   , persistent		= True
+   , allDesktops	= True
+
+   -- layout
+   , sepChar  = "%"  --delineator between plugig names and straight text
+   , alignSep = "}{" --delinator between left-right alignemnt
+   , template = "%StdinReader% }{ %myvolume% | %cpu% | %coretemp% | %memory%  | %battery% | %wlp2s0wi% | %dynnetwork% | %kbd% | %date%"
+
+   , commands =
+
+     --cpu activity monitor
+     [ Run Cpu [ "--template", "<fc=#a9a1e1><icon=/home/corey/.xmonad/icons/cpu.xbm/></fc> <total>%"
+       	       , "--Low", "30"
+	       , "--High", "70"
+	       , "--low", "#bbc2cf"
+	       , "--normal", "#bbc2cf"
+	       , "--high", "#fb4934"
+	       ] 50
+     , Run Memory [ "--template", "<fc=#51afef><icon=/home/corey/.xmonad/icons/mem.xbm/></fc> <usedratio>%"
+                  , "--Low", "10"
+                  , "--High", "80"
+                  , "--low", "#bbc2cf"
+                  , "--normal", "#bbc2cf"
+                  , "--high", "#fb4934"
+                  ] 50
+     , Run Date "<fc=#ecbe7b>%a %b %_d %k:%M</fc>" "date" 300
+     , Run DynNetwork [ "--template", "<fc=#4db5bd><icon=/home/corey/.xmonad/icons/arrow_down.xbm/></fc> <rx>, <fc=#c678dd><icon=/home/corey/.xmonad/icons/arrow_up.xbm/></fc> <tx>"
+                      , "--Low", "10"
+                      , "--High", "200"
+                      , "--low", "#bbc2cf"
+                      , "--normal", "#bbc2cf"
+                      , "--high", "#bbc2cf"
+                      ] 25
+     , Run CoreTemp [ "--template", "<fc=#cdb464><icon=/home/corey/.xmonad/icons/temp.xbm/></fc> <core0>°"
+                    , "--Low", "30"
+                    , "--High", "75"
+                    , "--low", "lightblue"
+                    , "--normal", "#bbc2cf"
+                    , "--high", "#aa4450"
+                    ] 50
+     , Run Battery [ "--template" , "<fc=#b1de76><icon=/home/corey/.xmonad/icons/battery.xbm/></fc> <acstatus>"
+                   , "--Low", "10"
+                   , "--High", "80"
+                   , "--low", "#fb4934"
+                   , "--normal", "#bbc2cf"
+                   , "--high", "#98be65"
+                   , "--" -- battery specific options
+                          -- discharging options
+                          , "-o", "<left>% (<timeleft>)"
+                          -- AC "on" status
+                          , "-O", "<left>% (<fc=#98be65>Charging</fc>)"
+                          -- charged status
+                          , "-i", "<fc=#98be65>Charged</fc>"
+                   ] 50
+     , Run StdinReader
+     , Run Kbd [ ("ca(fr)" , "<icon=/home/corey/.xmonad/icons/keyboard.xbm/> CA(FR)")
+               , ("us"     , "<icon=/home/corey/.xmonad/icons/keyboard.xbm/> US")
+               ]
+     , Run Wireless "wlp2s0" [ "--template", " <icon=/home/corey/.xmonad/icons/network-wireless.xbm/> <essid> <qualitybar> "
+                    	     ] 50
+     , Run Com "/bin/bash" ["-c", "~/.bin/xmobar-volume.sh"] "myvolume" 5
+     ]
+   }

@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# You can call this script like this :
+# brightness up
+# brightness down
+
+function get_brightness {
+    bright=$(xbacklight -get)
+    printf "%.0f" $bright
+}
+
+function send_notification {
+    brightness=`get_brightness`
+    str="━"
+    small_str="─"
+    bar=""
+    while (( ${#bar} < ($brightness / 5 ) ))
+    do
+	bar="${bar}${str}"
+    done
+    while (( ${#bar} < 20 ))
+    do
+	bar="${bar}${small_str}"
+    done
+    
+    # Send the notification
+    case $brightness in
+	[0-9]|[0-2][0-9])
+	    dunstify -a "mybrightness" -i notification-display-brightness-low -t 800 -r 2593 -u normal "$bar"
+	    ;;
+	[3-6][0-9])
+	    dunstify -a "mybrightness" -i notification-display-brightness-medium -t 800 -r 2593 -u normal "$bar"
+	    ;;
+	[7-9][0-9])
+	    dunstify -a "mybrightness" -i notification-display-brightness-high -t 800 -r 2593 -u normal "$bar"
+	    ;;
+	100)
+	    dunstify -a "mybrightness" -i notification-display-brightness-full -t 800 -r 2593 -u normal "$bar"
+    esac
+}
+
+case $1 in
+    up)
+	# Set the brightness up
+	brightness=`get_brightness`
+	if [ "$brightness" -eq 5 ]
+	then
+	    xbacklight +5 > /dev/null
+	else
+	    xbacklight +10 > /dev/null
+	fi
+	send_notification
+	;;
+    down)
+	brightness=`get_brightness`
+	if [ "$brightness" -le 10 ]
+	then
+	    xbacklight =5 > /dev/null
+	else
+	    xbacklight -10 > /dev/null
+	fi
+	send_notification
+esac
+

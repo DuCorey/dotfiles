@@ -1,0 +1,141 @@
+!Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+rofi.color-enabled: true
+!		   'background', 'border', 'separator'
+rofi.color-window: #282c34, #2c313a, #268bd2
+
+! State:	   'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
+rofi.color-normal: #282c34, #ffffff, #2c313a, #51afef, #ffffff
+rofi.color-active: #282828, #268bd2, #282828, #268bd2, #205171
+rofi.color-urgent: #282828, #f3843d, #282828, #268bd2, #ffc39c
+
+rofi.font: Hack Bold 16
+rofi.modi: window,run,drun,ssh,combi
+rofi.opacity: 90
+rofi.sidebar-mode: true
+
+rofi.kb-remove-to-eol: Control+Shift+BackSpace
+rofi.kb-row-up: Up,Shift+i
+rofi.bk-row-down: Down,Shift+k
+
+rofi.terminal: urxvt
+rofi.run-command: fish -c '{cmd}'
+rofi.run-list-command: 'fish -c functions'
+rofi.run-shell-command: /usr/bin/urxvt -e '{cmd}'
+
+rofi.icon-theme: Papirus-Dark
+rofi.show-icons: true
+
+URxvt.scrollBar: false
+URxvt.font: xft:Hack:size10.5
+URxvt.url-launcher: /usr/bin/firefox
+URxvt*loginShell: true
+URxvt*fading: 25
+URxvt.internalBorder:0
+URxvt.externalBorder:0
+
+URxvt.secondaryScreen:1
+URxvt.secondaryScroll:0
+
+URxvt.depth:24
+
+URxvt*background:		#282c34
+!				#5f656b
+!				#222222
+!				#101218
+URxvt*foreground:               #d1d4e0
+URxvt*cursorColor:              #d1d4e0
+URxvt*scrollColor:              #d1d4e0
+URxvt*highlightColor:           #252936
+URxvt*highlightTextColor:	#C0C5CE
+
+! black
+*.color0: #1e2127
+*.color8: #5c6370
+
+! red
+*.color1: #cc626a
+*.color9: #e06c75
+
+! green
+*.color2: #98c379
+*.color10: #a7d685
+
+! yellow
+*.color3: #da8548
+*.color11: #ecbe7b
+
+! blue
+*.color4: #3e86b8
+*.color12: #51afef
+
+! magenta
+*.color5: #a9a1e1
+*.color13: #c678dd
+
+! cyan
+*.color6: #4db5db
+*.color14: #56b6c2
+
+! white
+*.color7: #abb2bf
+*.color15: #ffffff
+
+*.foreground: #abb2bf
+*.cursorColor: #5c6370
+*.background: #282c34
+
+!extensions
+URxvt.perl-ext-common: default,matcher,eval
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+!URxvt.clipboard.copycmd:  xsel -ib
+!URxvt.clipboard.pastecmd: xsel -ob
+
+URxvt.keysym.Control-Up:    \033[1;5A
+URxvt.keysym.Control-Down:  \033[1;5B
+URxvt.keysym.Control-Left:  \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+
+!custom keybindings
+!URxvt.keysym.Shift-Up: command:\033]720;1\007
+!URxvt.keysym.Control-up: \033[1;5A
+
+! xscreensaver
+xscreensaver.dateFormat:
+xscreensaver.passwd.body.label:
+xscreensaver.passwd.heading.label:
+xscreensaver.passwd.login.label:
+xscreensaver.passwd.thermometer.width: 2
+xscreensaver.passwd.uname: True
+xscreensaver.passwd.unlock.label:
+
+
+xscreensaver.Dialog.background:         #282A36
+xscreensaver.Dialog.foreground:         #ffffff
+xscreensaver.Dialog.Button.background:  #282A36
+xscreensaver.Dialog.Button.foreground:  #ffffff
+xscreensaver.Dialog.text.background:    #282A36
+xscreensaver.Dialog.text.foreground:    #ffffff
+
+xscreensaver.Dialog.shadowThickness: 1
+xscreensaver.Dialog.topShadowColor:     #282A36
+xscreensaver.Dialog.bottomShadowColor:  #282A36
+
+xscreensaver.Dialog.headingFont: -*-hack-bold-r-*-*-20-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont: -*-hack-medium-r-*-*-20-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont: -*-hack-medium-r-*-*-20-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont: -*-hack-medium-r-*-*-20-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont: -*-hack-bold-r-*-*-20-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont: -*-hack-medium-r-*-*-20-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont: -*-hack-bold-r-*-*-20-*-*-*-*-*-*-*
+
+!cursor
+Xcursor.theme: Breeze
+Xcursor.size: 16
